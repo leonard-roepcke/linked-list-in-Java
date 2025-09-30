@@ -11,5 +11,11 @@ public class Main {       // start gehört zur Klasse
         System.out.println("First node data: " + start.getDaten());
         System.out.println("Second node data: " + start.getNext().getDaten());
         System.out.println("Third node data: " + start.getNext().getNext().getDaten());
+
+        System.out.println();
+        LinkedList list = new LinkedList();
+        list.addElement(5);
+        list.addElement(10);
+        System.out.println(list.getAllDaten());
     }
 }
