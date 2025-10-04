@@ -1,21 +1,12 @@
-public class Main {       // start gehört zur Klasse
-
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Linked List Program");
-        Knoten start = new Knoten();
-        start.setNext(new Knoten());
-        start.getNext().setDaten(5);
-        start.getNext().setNext(new Knoten());
-        start.getNext().getNext().setDaten(10);
 
-        System.out.println("First node data: " + start.getDaten());
-        System.out.println("Second node data: " + start.getNext().getDaten());
-        System.out.println("Third node data: " + start.getNext().getNext().getDaten());
+        int[] a = new int[3];  // Array mit 3 Elementen
 
-        System.out.println();
-        LinkedList list = new LinkedList();
-        list.addElement(5);
-        list.addElement(10);
-        System.out.println(list.getAllDaten());
+        a[0] = 1;
+        a[1] = 2;
+        a[2] = 3;
+
+        System.out.println(a[2]);  // Ausgabe: 3
     }
 }
