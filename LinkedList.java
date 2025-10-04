@@ -36,6 +36,19 @@ public class LinkedList {
         return -1;
     }
 
+    public void setElementAt(int index, int data){
+        Knoten current = start;
+        int count = 0;
+        while(current != null){
+            if(count == index){
+                current.setDaten(data);
+                return;
+            }
+            count++;
+            current = current.getNext();
+        }
+    }
+
     public void addElement(int data){
         Knoten newNode = new Knoten();
         newNode.setDaten(data);
@@ -47,6 +60,47 @@ public class LinkedList {
                 current = current.getNext();
             }
             current.setNext(newNode);
+        }
+    }
+
+    public void removeElement(int index){
+        if(start == null) return;
+        if(index == 0){
+            start = start.getNext();
+            return;
+        }
+        Knoten current = start;
+        Knoten previous = null;
+        int count = 0;
+        while(current != null && count < index){
+            previous = current;
+            current = current.getNext();
+            count++;
+        }
+        if(current != null){
+            previous.setNext(current.getNext());
+        }
+    }
+
+    public void insertElementAt(int index, int data){
+        Knoten newNode = new Knoten();
+        newNode.setDaten(data);
+        if(index == 0){
+            newNode.setNext(start);
+            start = newNode;
+            return;
+        }
+        Knoten current = start;
+        Knoten previous = null;
+        int count = 0;
+        while(current != null && count < index){
+            previous = current;
+            current = current.getNext();
+            count++;
+        }
+        if(previous != null){
+            previous.setNext(newNode);
+            newNode.setNext(current);
         }
     }
         
