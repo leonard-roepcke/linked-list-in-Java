@@ -1,8 +1,15 @@
 public class Knoten {
     private int daten;
     private Knoten next;
+    private Knoten previous;
     public Knoten(){
         next = null;
+        previous = null; 
+        daten = 0;
+    }
+
+    public Knoten(Knoten previous){
+        this.previous = previous;
         daten = 0;
     }
 

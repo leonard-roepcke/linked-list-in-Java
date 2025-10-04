@@ -1,54 +1,30 @@
 public class LinkedList {
     private Knoten start;
+    private Knoten end;
     
     public LinkedList(){
         start = new Knoten();
-    }
-    
-    
-    public String getAllDaten() {
-        Knoten current = start;
-        String result = "";
-        while (current != null) {
-            result += current.getDaten() + " ";
-            current = current.getNext();
-        }
-        return result;
+        end = start;
     }
     
     public void addElement(int data){
-        Knoten newNode = new Knoten();
-        newNode.setDaten(data);
-        if(start == null){
-            start = newNode;
-        } else {
-            Knoten current = start;
-            while(current.getNext() != null){
-                current = current.getNext();
-            }
-            current.setNext(newNode);
+        Knoten newNode = new Knoten(end);
+        
+        end.setNext(newNode);
+        
+    }
+
+    public int getLastData(){
+        if(end != null){
+            return end.getDaten();
+        }
+        else{
+            return 0;
         }
     }
-    
-    public void removeElement(int index){
-        if(start == null) return;
-        if(index == 0){
-            start = start.getNext();
-            return;
-        }
-        Knoten current = start;
-        Knoten previous = null;
-        int count = 0;
-        while(current != null && count < index){
-            previous = current;
-            current = current.getNext();
-            count++;
-        }
-        if(current != null){
-            previous.setNext(current.getNext());
-        }
-    }
-    
+
+    // bis hierhin für Presientation
+
     public void insertElementAt(int index, int data){
         Knoten newNode = new Knoten();
         newNode.setDaten(data);
@@ -70,6 +46,37 @@ public class LinkedList {
             newNode.setNext(current);
         }
     }
+    
+    public String getAllDaten() {
+        Knoten current = start;
+        String result = "";
+        while (current != null) {
+            result += current.getDaten() + " ";
+            current = current.getNext();
+        }
+        return result;
+    }
+    
+    
+    public void removeElement(int index){
+        if(start == null) return;
+        if(index == 0){
+            start = start.getNext();
+            return;
+        }
+        Knoten current = start;
+        Knoten previous = null;
+        int count = 0;
+        while(current != null && count < index){
+            previous = current;
+            current = current.getNext();
+            count++;
+        }
+        if(current != null){
+            previous.setNext(current.getNext());
+        }
+    }
+    
 
     // bis hierhin für Presientation
     
@@ -81,6 +88,8 @@ public class LinkedList {
             return 0;
         }
     }
+
+    
 
     public int getElementAt(int index){
         Knoten current = start;
