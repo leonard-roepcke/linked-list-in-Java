@@ -28,4 +28,10 @@ public class Knoten {
     public Knoten getNext() {
         return next;
     }
+
+    public void setPrevious(Knoten previous) {
+        this.previous = previous;
+    }
 }
+
+
