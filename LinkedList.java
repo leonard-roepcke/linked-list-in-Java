@@ -1,26 +1,16 @@
-public class LinkedList {
+public class LinkedList<typ> {
     private Knoten start;
     public LinkedList(){
         start = new Knoten();
     }
 
-    public int getfirstData(){
+    public typ getfirstData(){
         if(start != null){
             return start.getDaten();
         }
         else{
-            return 0;
+            return null;
         }
-    }
-
-    public int getAllDaten(){
-        Knoten current = start;
-        int sum = 0;
-        while(current != null){
-            sum += current.getDaten();
-            current = current.getNext();
-        }
-        return sum;
     }
 
     public int getElementAt(int index){
@@ -36,7 +26,7 @@ public class LinkedList {
         return -1;
     }
 
-    public void addElement(int data){
+    public void addElement(typ data){
         Knoten newNode = new Knoten();
         newNode.setDaten(data);
         if(start == null){

@@ -1,24 +1,24 @@
-public class Knoten {
-    private int daten;
-    private Knoten next;
+public class Knoten<typ> {
+    private typ daten;
+    private Knoten<typ> next;
     public Knoten(){
         next = null;
-        daten = 0;
+        daten = null;
     }
 
-    public void setNext(Knoten next) {
+    public void setNext(Knoten<typ> next) {
         this.next = next;
     }
 
-    public void setDaten(int daten) {
+    public void setDaten(typ daten) {
         this.daten = daten;
     }
 
-    public int getDaten() {
+    public typ getDaten() {
         return daten;
     }
 
-    public Knoten getNext() {
+    public Knoten<typ> getNext() {
         return next;
     }
 }
