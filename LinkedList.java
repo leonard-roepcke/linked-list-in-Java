@@ -1,9 +1,78 @@
 public class LinkedList {
     private Knoten start;
+    
     public LinkedList(){
         start = new Knoten();
     }
+    
+    
+    public String getAllDaten() {
+        Knoten current = start;
+        String result = "";
+        while (current != null) {
+            result += current.getDaten() + " ";
+            current = current.getNext();
+        }
+        return result;
+    }
+    
+    public void addElement(int data){
+        Knoten newNode = new Knoten();
+        newNode.setDaten(data);
+        if(start == null){
+            start = newNode;
+        } else {
+            Knoten current = start;
+            while(current.getNext() != null){
+                current = current.getNext();
+            }
+            current.setNext(newNode);
+        }
+    }
+    
+    public void removeElement(int index){
+        if(start == null) return;
+        if(index == 0){
+            start = start.getNext();
+            return;
+        }
+        Knoten current = start;
+        Knoten previous = null;
+        int count = 0;
+        while(current != null && count < index){
+            previous = current;
+            current = current.getNext();
+            count++;
+        }
+        if(current != null){
+            previous.setNext(current.getNext());
+        }
+    }
+    
+    public void insertElementAt(int index, int data){
+        Knoten newNode = new Knoten();
+        newNode.setDaten(data);
+        if(index == 0){
+            newNode.setNext(start);
+            start = newNode;
+            return;
+        }
+        Knoten current = start;
+        Knoten previous = null;
+        int count = 0;
+        while(current != null && count < index){
+            previous = current;
+            current = current.getNext();
+            count++;
+        }
+        if(previous != null){
+            previous.setNext(newNode);
+            newNode.setNext(current);
+        }
+    }
 
+    // bis hierhin für Presientation
+    
     public int getfirstData(){
         if(start != null){
             return start.getDaten();
@@ -11,16 +80,6 @@ public class LinkedList {
         else{
             return 0;
         }
-    }
-
-    public int getAllDaten(){
-        Knoten current = start;
-        int sum = 0;
-        while(current != null){
-            sum += current.getDaten();
-            current = current.getNext();
-        }
-        return sum;
     }
 
     public int getElementAt(int index){
@@ -49,59 +108,5 @@ public class LinkedList {
         }
     }
 
-    public void addElement(int data){
-        Knoten newNode = new Knoten();
-        newNode.setDaten(data);
-        if(start == null){
-            start = newNode;
-        } else {
-            Knoten current = start;
-            while(current.getNext() != null){
-                current = current.getNext();
-            }
-            current.setNext(newNode);
-        }
-    }
-
-    public void removeElement(int index){
-        if(start == null) return;
-        if(index == 0){
-            start = start.getNext();
-            return;
-        }
-        Knoten current = start;
-        Knoten previous = null;
-        int count = 0;
-        while(current != null && count < index){
-            previous = current;
-            current = current.getNext();
-            count++;
-        }
-        if(current != null){
-            previous.setNext(current.getNext());
-        }
-    }
-
-    public void insertElementAt(int index, int data){
-        Knoten newNode = new Knoten();
-        newNode.setDaten(data);
-        if(index == 0){
-            newNode.setNext(start);
-            start = newNode;
-            return;
-        }
-        Knoten current = start;
-        Knoten previous = null;
-        int count = 0;
-        while(current != null && count < index){
-            previous = current;
-            current = current.getNext();
-            count++;
-        }
-        if(previous != null){
-            previous.setNext(newNode);
-            newNode.setNext(current);
-        }
-    }
         
 }
